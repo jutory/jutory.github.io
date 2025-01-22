@@ -1,1 +1,4 @@
-@use 'main';
+@forward 'base';
+@forward 'components';
+@forward 'layout';
+@forward 'pages';
