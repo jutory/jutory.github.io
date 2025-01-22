@@ -1,9 +1,5 @@
----
----
-
 @use '../../_sass/main';
+
 @use '../../_sass/main.bundle' as bundle;
 
-@use 'vendors/bootstrap/scss/bootstrap';
-
-/* append your custom style below */
+@use '../../assets/css/vendors/bootstrap/scss' as bootstrap;
