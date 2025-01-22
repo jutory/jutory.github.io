@@ -1,8 +1,8 @@
 ---
 ---
 
-@use 'main';
-
-@use 'main.bundle' with (
+@use '../../_sass/main' as main with (
   $env: 'production'
 );
+
+/* append your custom style below */
