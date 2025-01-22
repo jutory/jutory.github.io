@@ -1,12 +1,9 @@
 ---
 ---
 
-@use 'main
-{%- if jekyll.environment == 'production' -%}
-  .bundle
-{%- endif -%}
-';
+@use '../../_sass/main';
+@use '../../_sass/main.bundle' as bundle;
 
-@use 'assets/css/vendors/bootstrap/scss/bootstrap';
+@use 'vendors/bootstrap/scss/bootstrap';
 
 /* append your custom style below */
