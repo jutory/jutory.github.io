@@ -2,9 +2,9 @@
 title: Getting Started
 description: >-
     The start of the real journey I want
-author: Park Juyoung
+author: jutory
 date: YYYY-MM-DD HH:MM:SS +09:00
-categories: [Blogging]
+categories: [Blogging, thinking]
 tags: [getting started]
 pin: true
 media_subpath: '/posts/20250122'
