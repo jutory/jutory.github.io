@@ -1,4 +1,2 @@
-@forward 'base';
-@forward 'components';
-@forward 'layout';
-@forward 'pages';
+@use 'vendors/bootstrap';
+@use 'main';
