@@ -1,7 +1,7 @@
 ---
 ---
 
-@use '../../_sass/main' as main with (
+@use 'main' as main with (
   $env: 'production'
 );
 
