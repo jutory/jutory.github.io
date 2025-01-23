@@ -1,13 +1,13 @@
 ---
 title: Getting Started
 description: >-
-    The start of the real journey I want
-author: jutory
-date: YYYY-MM-DD HH:MM:SS +09:00
-categories: [Blogging, thinking]
-tags: [getting started]
+  Get started with Chirpy basics in this comprehensive overview.
+  You will learn how to install, configure, and use your first Chirpy-based website, as well as deploy it to a web server.
+author: cotes
+date: 2019-08-09 20:55:00 +0800
+categories: [Sample]
 pin: true
-media_subpath: '/posts/20250122'
+media_subpath: '/posts/20180809'
 ---
 
 ## Creating a Site Repository
