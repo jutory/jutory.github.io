@@ -10,6 +10,7 @@ mermaid: true
 image:
   path: /assets/img/post-bus-img.jpg
   alt: Photo of the 6012 bus I took every day on my way to work.
+published: false
 ---
 
 ## Headings
