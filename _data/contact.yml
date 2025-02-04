@@ -4,13 +4,13 @@
   icon: "fab fa-github"
   url: "https://github.com/jutory"
 
-- type: instagram
-  icon: "fab fa-fw fa-instagram"
-  url: "https://www.instagram.com/juyoungzy"
-
 - type: linkedin
   icon: 'fab fa-linkedin'
   url:  'https://www.linkedin.com/in/park-juyoung'
+
+- type: instagram
+  icon: "fab fa-fw fa-instagram"
+  url: "https://www.instagram.com/juyoungzy"
 
 - type: email
   icon: "fas fa-envelope"
