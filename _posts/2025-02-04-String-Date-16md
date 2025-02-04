@@ -129,7 +129,7 @@ ORDER BY
 >    - **DATE(datetime)** 함수는 DATETIME 데이터에서 날짜 부분만 추출하여 기본 포맷인 YYYY-MM-DD 형식으로 반환함 <br> ex) DATE('2018-01-22 14:32:00')는 `2018-01-22`를 반환합니다.
 >
 > - **DATE_FORMAT() 함수 (MySQL)**
->    - **DATE_FORMAT(date, format)** 함수는 날짜 및 시간 데이터를 사용자가 지정한 포맷의 문자열로 변환함. <br> ex) DATE_FORMAT(DATETIME, '%Y/%m/%d') = 'YYYY/MM/DD' 형식의 문자열로 반환
+>    - **DATE_FORMAT(date, format)** 함수는 날짜 및 시간 데이터를 사용자가 지정한 포맷의 문자열로 변환함. <br> `ex) DATE_FORMAT(DATETIME, '%Y/%m/%d')` = 'YYYY/MM/DD' 형식의 문자열로 반환
 >        - _%Y_ : 4자리 연도
 >        - _%m_ : 2자리 월
 >        - _%d_ : 2자리 일
@@ -137,11 +137,11 @@ ORDER BY
 >        - _%i_ : 분
 >        - _%s_ : 초
 > - **만약 이 결과를 다시 날짜(Date) 타입으로 사용하고 싶다면**
->    - **STR_TO_DATE()** 함수를 사용하여 해당 문자열을 날짜로 변환 <br> ex) STR_TO_DATE(DATE_FORMAT(NOW(), '%Y/%m/%d'), '%Y/%m/%d')
+>    - **STR_TO_DATE()** 함수를 사용하여 해당 문자열을 날짜로 변환 <br> `ex) STR_TO_DATE(DATE_FORMAT(NOW(), '%Y/%m/%d'), '%Y/%m/%d')`
 >
 > **+ 헷갈리지 말자**
-> - `DATE(SYSDATE())`는 날짜 부분만 추출하여 DATE 데이터 타입의 값("YYYY-MM-DD" 형식)을 반환하지만,
-> - `DATE_FORMAT(SYSDATE(), '%Y/%m/%d')`는 동일한 날짜를 지정한 포맷(여기서는 "YYYY/mm/dd")으로 형식화한 **문자열**을 반환함
+> - DATE(SYSDATE())는 날짜 부분만 추출하여 DATE 데이터 타입의 값(YYYY-MM-DD 형식)을 반환하지만,
+> -`DATE_FORMAT(SYSDATE(), '%Y/%MM%DD')는 동일한 날짜를 지정한 포맷(여기서는 YYYY/MM/DD")으로 형식화한 **문자열**을 반환함
 
 <br>
 - - -
