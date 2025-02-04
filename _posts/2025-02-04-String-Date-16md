@@ -1,9 +1,10 @@
 ---
-title: "DATETIME에서 DATE로 형 변환"
+title: "카테고리 별 상품 개수 구하기
+"
 description: >-  
   String, Date
 author: jutory
-date: 2025-02-04
+date: 2025-02-05
 categories: [SQL Coding Test, Programmers]  
 tags: [SQL]  
 ---
