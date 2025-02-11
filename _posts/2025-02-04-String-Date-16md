@@ -1,6 +1,5 @@
 ---
-title: "카테고리 별 상품 개수 구하기
-"
+title: "DATETIME에서 DATE로 형 변환"
 description: >-  
   String, Date
 author: jutory
@@ -148,4 +147,4 @@ ORDER BY
 <br>
 ## **Useful link**
 
-[보호소에서 중성화한 동물](https://school.programmers.co.kr/learn/courses/30/lessons/59045)
+[DATETIME에서 DATE로 형 변환](https://school.programmers.co.kr/learn/courses/30/lessons/59414)
