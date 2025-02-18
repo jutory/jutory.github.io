@@ -1,0 +1,120 @@
+---
+title: "자동차 대여 기록에서 장기/단기 대여 구분하기"
+description: >-
+  String, Date
+author: jutory
+date: 2025-02-14
+categories: [SQL Coding Test, Programmers]
+tags: [SQL]
+---
+<br>
+## **문제 설명**
+
+다음은 어느 자동차 대여 회사의 자동차 대여 기록 정보를 담은 **CAR_RENTAL_COMPANY_RENTAL_HISTORY 테이블**입니다.
+
+<br>
+> #### **CAR_RENTAL_COMPANY_RENTAL_HISTORY 테이블**
+
+| Column name | Type    | Nullable | Description         |
+|-------------|---------|----------|---------------------|
+| HISTORY_ID  | INTEGER | FALSE    | 자동차 대여 기록 ID |
+| CAR_ID      | INTEGER | FALSE    | 자동차 ID          |
+| START_DATE  | DATE    | FALSE    | 대여 시작일         |
+| END_DATE    | DATE    | FALSE    | 대여 종료일         |
+
+<br>
+- - -
+<br>
+## **문제**
+
+> CAR_RENTAL_COMPANY_RENTAL_HISTORY 테이블에서 대여 시작일이 2022년 9월에 속하는 대여 기록에 대해서 대여 기간이 30일 이상이면 '장기 대여' 그렇지 않으면 '단기 대여' 로 표시하는 컬럼(컬럼명: RENT_TYPE)을 추가하여 대여기록을 출력하는 SQL문을 작성해주세요. 결과는 대여 기록 ID를 기준으로 내림차순 정렬해주세요.
+{: .prompt-info }
+
+<br>
+- - -
+<br>
+<details>
+  <summary style="font-size: 1.5em; font-weight: bold;">풀이 과정</summary>
+<div markdown="1">
+
+1. **조건 확인**  
+   - 대여 시작일이 **2022년 9월**이므로 → **`START_DATE` BETWEEN '2022-09-01' AND '2022-09-30'**
+
+2. **대여 기간 계산**  
+   - WHERE 조건으로 **`END_DATE` - `START_DATE` + 1** → 30 이상이면 장기 대여로 처리하면 될 것 같군.
+
+3. **조건에 따라 `RENT_TYPE` 지정**
+   - CASE WHEN (`END_DATE` - `START_DATE` + 1) >= 30 THEN '장기 대여' ELSE '단기 대여' END
+
+4. **결과 정렬**
+   - 정렬 기준에 따라 **ORDER BY**로 결과 정렬
+       - **`HISTORY_ID`** 기준으로 내림차순 정렬
+
+5. **최종 출력 컬럼은**  
+   - `HISTORY_ID`, `CAR_ID`, `START_DATE`, `END_DATE`, `RENT_TYPE`
+
+* **_교훈_**
+   - LIKE은 시간이 오래 걸리는 것으로 알고 있는데.. 이를 대체할 방법은 어떤 것이 있을까
+</div>
+</details>
+
+<br>
+- - -
+<br>
+## **정답**
+
+```sql
+SELECT HISTORY_ID, CAR_ID, 
+       DATE_FORMAT(START_DATE, '%Y-%m-%d') AS START_DATE,
+       DATE_FORMAT(END_DATE, '%Y-%m-%d') AS END_DATE,
+       CASE WHEN DATEDIFF(END_DATE, START_DATE) + 1 >= 30 THEN '장기 대여'
+            ELSE '단기 대여' END AS RENT_TYPE
+FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY
+WHERE DATE_FORMAT(START_DATE, '%Y-%m') = '2022-09'
+ORDER BY HISTORY_ID DESC;
+```
+
+- - -
+<br>
+## **Tip**
+> 1. **날짜 범위 필터링**  
+>    - **BETWEEN 'YYYY-MM-DD' AND 'YYYY-MM-DD'** : 지정된 기간 내의 데이터 선택
+>    - 혹은 DATE_FORMAT(`DATE타입칼럼`, '%Y-%m') = '2022-09' 사용
+> 2. **날짜 차이 계산할 때!!!**  
+>    - **`END_DATE` - `START_DATE` + 1** : 하루 더해줘야 올바른 대여일 수 계산이 가능
+{: .prompt-tip }
+
+<br>
+- - -
+<br>
+## **개념 확인**
+> - **날짜 연산**  
+>    - **END_DATE - START_DATE + 1** : 끝나는날짜 - 시작일 + 1
+>
+> - **CASE문**
+>    - 조건에 따라 서로 다른 결과를 반환하는 제어 구조 <br>
+>      CASE WHEN 조건 THEN 반환값 <br>
+>           ELSE 기본 반환값 <br>
+>       END 형태로 사용
+>
+> - **DATE_FORMAT 함수**  
+    - 날짜 데이터를 원하는 형식으로 변환  
+    - **`DATE_FORMAT(날짜, '형식')`** 형태로 사용  
+    - `ex) DATE_FORMAT(`DATE타입컬럼`, '%Y-%m-%d') → `2025-02-13` 형식으로 출력`
+
+> - **날짜 비교*(ORACLE vs MySQL)**git commit -m "docs(sql): update SQL Coding Test ~ 26"
+
+    | 구분               | ORACLE                                | MySQL                             |
+    |--------------------|--------------------------------------|------------------------------------|
+    | 날짜 데이터 입력    | **TO_DATE('YYYY-MM-DD', '형식')**    | 'YYYY-MM-DD'                     |
+    | 날짜 비교 연산자    | **=, >, <** 연산자 가능               | **=, >, <** 연산자 가능            |
+    | 날짜 형식 변환      | **TO_CHAR(`날짜타입`, '형식')**        | **DATE_FORMAT(`날짜타입`, '형식')**      |
+
+    - **ORACLE**에서는 **TO_DATE**로 날짜 변환 후 비교하며, **TO_CHAR**로 형식 변환 <br> 반면 **MySQL**은 **DATE_FORMAT**을 사용해 날짜 형식을 쉽게 지정 가능
+
+<br>
+- - -
+<br>
+## **Useful link**
+
+[자동차 대여 기록에서 장기/단기 대여 구분하기](https://school.programmers.co.kr/learn/courses/30/lessons/151138)
